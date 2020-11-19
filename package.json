@@ -1,0 +1,32 @@
+{
+  "name": "portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@n8tb1t/use-scroll-position": "^2.0.3",
+    "@react-hook/window-size": "^3.0.7",
+    "@styled-icons/entypo-social": "^10.18.0",
+    "@types/styled-components": "^5.1.4",
+    "@types/styled-jsx": "^2.2.8",
+    "@types/yup": "^0.29.9",
+    "babel-plugin-styled-components": "^1.11.1",
+    "formik": "^2.2.1",
+    "next": "^10.0.2-canary.2",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "sal.js": "^0.8.1",
+    "styled-components": "^5.2.0",
+    "yup": "^0.29.3"
+  },
+  "devDependencies": {
+    "@types/node": "^14.11.2",
+    "@types/react": "^16.9.49",
+    "typescript": "^4.0.3"
+  }
+}
