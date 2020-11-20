@@ -1,20 +1,18 @@
 import { TTypographySize } from "@declarations/styled";
 import { DefaultTheme } from "styled-components";
 const materialDesignScale: any = {
-	xxs: 9.22,
 	xs: 9.22,
 	s: 11.52,
 	m: 14.4,
 	base: 18,
 	l: 22.5,
 	xl: 28.13,
-	xxl: 28,
-	d1: 20,
-	d2: 24,
-	d3: 34,
-	d4: 48,
-	d5: 60,
-	d6: 96,
+	d6: 20,
+	d5: 24,
+	d4: 34,
+	d3: 48,
+	d2: 60,
+	d1: 96,
 };
 const multipliers: any = {
 	base: 1, //Base font size multiplier
@@ -52,8 +50,8 @@ const theme: DefaultTheme = {
 		values: {
 			xs: "28.75em",
 			sm: "37.5em",
-			md: "52.25em",
-			lg: "64em",
+			md: "60em",
+			lg: "75em",
 			xl: "88em",
 		},
 		up: function (value) {
@@ -64,18 +62,18 @@ const theme: DefaultTheme = {
 		},
 	},
 	fontFamily: {
-		body: `"Open Sans",Meiryo,"Hiragino Kaku Gothic ProN","MS PGothic",sans-serif `,
-		display: `"Roboto",Meiryo,"Hiragino Kaku Gothic ProN","MS PGothic",sans-serif`,
+		body: `"Lato",Meiryo,"Hiragino Kaku Gothic ProN","MS PGothic",sans-serif `,
+		display: `"Sue Ellen Francisco",Meiryo,"Hiragino Kaku Gothic ProN","MS PGothic",sans-serif`,
 		// body: "Open Sans",
 		// display: "Roboto",
 	},
 	palette: {
 		primary: "#fff",
 		hover: "#f8f8f8",
-		secondary: "#1e1e1e",
-		hoverSecondary: "#111",
+		secondary: "#111",
+		hoverSecondary: "#1e1e1e",
 		secondaryLight: "#222",
-		tertiary: "#111",
+		tertiary: "#1e1e1e",
 		hoverTertiary: "#444",
 		tertiaryLight: "#666",
 		formGrey: "#d3d3d3",
@@ -178,7 +176,7 @@ const theme: DefaultTheme = {
 		normal: ".3s",
 		fast: ".2s",
 	},
-	screenMaxWidth: "77.5em",
+	screenMaxWidth: "90em",
 	screenMaxWidthWide: "85em",
 };
 
