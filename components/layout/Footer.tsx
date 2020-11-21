@@ -52,8 +52,8 @@ const SocialMediaDiv = styled.div`
 	place-items: center;
 	${({ theme }) => theme.breakpoints.down("sm")} {
 		grid-column: 1/-1;
-		order: 1;
-		padding-bottom: 2em;
+		order: 4;
+		padding: 2em 0;
 	}
 `;
 const { addressLine1, addressLine2, addressLine3 } = contactData;

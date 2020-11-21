@@ -2,6 +2,7 @@ import React, { HTMLAttributes } from "react";
 import Header from "@components/layout/Header";
 import Footer from "@components/layout/Footer";
 import styled from "styled-components";
+import MobileMenu from "@features/layout/MobileMenu";
 
 interface ILayout extends HTMLAttributes<HTMLDivElement> {}
 const Grid = styled.div`
@@ -17,6 +18,7 @@ function Layout({ children }: ILayout) {
 			<Header />
 			<Grid>{children}</Grid>
 			<Footer />
+			<MobileMenu />
 		</>
 	);
 }

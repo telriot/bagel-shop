@@ -2,8 +2,9 @@ import { AppProps } from "next/app";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import Head from "next/head";
 import theme from "@styles/theme";
-import fontTheme from "../styles/font";
-
+import fontTheme from "@styles/font";
+import { Provider } from "react-redux";
+import store from "@app/store";
 const GlobalStyle = createGlobalStyle`
 
 html {
@@ -57,10 +58,12 @@ function MyApp({ Component, pageProps }: AppProps) {
 				<title>Juri's Bagels</title>
 			</Head>
 			<GlobalStyle />
-			<ThemeProvider theme={theme}>
-				{" "}
-				<Component {...pageProps} />{" "}
-			</ThemeProvider>
+			<Provider store={store}>
+				<ThemeProvider theme={theme}>
+					{" "}
+					<Component {...pageProps} />{" "}
+				</ThemeProvider>
+			</Provider>
 		</>
 	);
 }

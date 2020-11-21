@@ -1,20 +1,22 @@
 import styled from "styled-components";
 import { siteInfo } from "@public/config";
-const StyledSpan = styled.span`
+import { HTMLAttributes } from "react";
+interface ICopyright extends HTMLAttributes<HTMLSpanElement> {
+	invert?: boolean;
+}
+const StyledSpan = styled.span<ICopyright>`
 	font-family: ${({ theme }) => theme.fontFamily.body};
 	font-weight: 300;
 	font-size: ${({ theme }) => theme.typography.s};
-	color: ${({ theme }) => theme.palette.text.primary};
+	color: ${({ theme, invert }) =>
+		invert ? theme.palette.text.secondary : theme.palette.text.primary};
 	cursor: default;
-	${({ theme }) => theme.breakpoints.down("lg")} {
-		font-size: ${({ theme }) => theme.typography.xs};
-	}
 `;
 
-export default function Copyright() {
+export default function Copyright({ invert }: ICopyright) {
 	const date = new Date();
 	return (
-		<StyledSpan>
+		<StyledSpan invert={invert}>
 			&copy; Copyright {date.getFullYear()} - {siteInfo.name}
 		</StyledSpan>
 	);

@@ -10,8 +10,8 @@ interface IIconStyleWrapper extends HTMLAttributes<HTMLDivElement> {
 
 export const IconStyleWrapper = styled.div<IIconStyleWrapper>`
 	${StyledIconBase} {
-		height: 1.5em;
-		width: 1.5em;
+		height: 2.25em;
+		width: 2.25em;
 		margin: 0 1em;
 		transition: color 0.3s;
 		cursor: pointer;
@@ -22,16 +22,14 @@ export const IconStyleWrapper = styled.div<IIconStyleWrapper>`
 				invert ? theme.palette.secondary : "#111"};
 		}
 		${({ theme }) => theme.breakpoints.down("sm")} {
-			height: 2.5em;
-			width: 2.5em;
+			height: 2.75em;
+			width: 2.75em;
 		}
 	}
 `;
 const Container = styled.div`
 	max-width: 13em;
-	${({ theme }) => theme.breakpoints.down("md")} {
-		max-width: 10em;
-	}
+
 	${({ theme }) => theme.breakpoints.down("sm")} {
 		max-width: 20em;
 	}

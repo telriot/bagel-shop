@@ -3,24 +3,24 @@ import { navLinks } from "@public/config";
 import Hamburger from "@components/Hamburger";
 import Link from "next/link";
 import styled from "styled-components";
+import MobileMenuButton from "@features/layout/MobileMenuButton";
 
-interface INavMenu extends HTMLAttributes<HTMLHeadingElement> {}
 interface INavContainer extends HTMLAttributes<HTMLHeadingElement> {}
 const NavContainer = styled.nav<INavContainer>`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	font-family: ${({ theme }) => theme.fontFamily.display};
-	font-size: ${({ theme }) => theme.typography.l};
+
 	color: ${({ theme }) => theme.palette.text.primary};
 	${({ theme }) => theme.breakpoints.down("md")} {
 		justify-content: flex-end;
 	}
+
 	${({ theme }) => theme.breakpoints.down("xs")} {
 		display: none;
 	}
 `;
-const NavList = styled.ul`
+const NavList = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -31,54 +31,30 @@ const NavList = styled.ul`
 		min-width: 9em;
 	}
 `;
-const NavItem = styled.li`
+export const NavItem = styled.div`
 	cursor: pointer;
 	list-style: none;
-	position: relative;
 	margin: 0 1rem;
-	&:before {
-		content: "";
-		display: inline-block;
-		position: absolute;
-		left: -2.5%;
-		bottom: -1px;
-		height: 3px;
-		width: 105%;
-		background: ${({ theme }) => theme.palette.secondary};
-		transform: scaleX(0) translateY(3px);
-		transform-origin: left;
-		transition: ${({ theme }) => "transform" + ", " + theme.transition.normal};
-	}
-	&:hover:before,
-	&:focus:before {
-		transform: scaleX(1) translateY(3px);
-		transition: ${({ theme }) => "transform" + ", " + theme.transition.normal};
-	}
-	${({ theme }) => theme.breakpoints.down("xs")} {
-		display: none;
+	font-family: ${({ theme }) => theme.fontFamily.display};
+	font-size: ${({ theme }) => theme.typography.xl};
+	${({ theme }) => theme.breakpoints.down("sm")} {
+		font-size: ${({ theme }) => theme.typography.l};
 	}
 `;
 
-const menuItems = [...navLinks];
-
 function NavMenu() {
-	const handleMenuClick = () => {
-		console.log("click");
-	};
-	// const { t } = useTranslation();
-
 	return (
 		<>
 			<NavContainer>
 				<NavList>
-					{menuItems.map((item) => (
+					{navLinks.map((item) => (
 						<NavItem key={`item-${item.title}`}>
 							<Link href={item.link}>{item.name}</Link>
 						</NavItem>
 					))}
 				</NavList>
 			</NavContainer>
-			<Hamburger onClick={handleMenuClick} />
+			<MobileMenuButton />
 		</>
 	);
 }

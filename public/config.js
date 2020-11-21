@@ -3,7 +3,7 @@ export const siteInfo = {
 	subtitle: "and scones and other sweet stuff",
 };
 export const navLinks = [
-	{ title: "Menu", link: "/about", name: "about" },
+	{ title: "Products", link: "/products", name: "products" },
 	{ title: "Contacts", link: "/contacts", name: "contacts" },
 	{ title: "News", link: "/news", name: "news" },
 
@@ -37,6 +37,82 @@ export const staples = [
 		body:
 			"Some of the things I write here have no sense, but it is important to understand that it is not about the contents, it is just about the text. Terrible scones by the way.",
 		btnText: "TO THE SCONES",
+	},
+];
+export const products = [
+	{
+		imageSrc: "/pics/bananaBread.jpg",
+		title: "BANANA BREAD",
+		body:
+			"Some of the things I write here have no sense, but it is important to understand that it is not about the contents, it is just about the text. I would rather do this than using lorem ipsum everywhere.",
+		variants: [
+			{
+				id: "banana-bread-plain",
+				price: 1000,
+				name: "Plain Banana Bread",
+				weight: 750,
+			},
+			{
+				id: "choco-walnut-banana-bread",
+				price: 1250,
+				name: "Choco-walnut banana bread",
+				weight: 750,
+			},
+		],
+	},
+	{
+		imageSrc: "/pics/bagelStaple.jpg",
+		title: "MIXED BAGELS",
+		body:
+			"Some of the things I write here have no sense, but it is important to understand that it is not about the contents, it is just about the text. This bagels, for instance, really look good.",
+		variants: [
+			{
+				id: "bagels-mixed-6",
+				price: 1200,
+				name: "Six pack",
+				weight: 750,
+			},
+			{
+				id: "bagels-mixed-9",
+				price: 1750,
+				name: "Nine pack",
+				weight: 1100,
+			},
+			{
+				id: "bagels-mixed-12",
+				price: 2250,
+				name: "Twelve pack",
+				weight: 1400,
+			},
+		],
+	},
+	{
+		imageSrc: "/pics/sconeStaple.jpg",
+		title: "CORN SCONES",
+		body:
+			"Some of the things I write here have no sense, but it is important to understand that it is not about the contents, it is just about the text. Terrible scones by the way.",
+		body:
+			"Some of the things I write here have no sense, but it is important to understand that it is not about the contents, it is just about the text. I would rather do this than using lorem ipsum everywhere.",
+		variants: [
+			{
+				id: "corn-scones-6",
+				price: 1000,
+				name: "Six pack",
+				weight: 450,
+			},
+			{
+				id: "corn-scones-9",
+				price: 1450,
+				name: "Nine pack",
+				weight: 650,
+			},
+			{
+				id: "corn-scones-12",
+				price: 1800,
+				name: "Twelve pack",
+				weight: 850,
+			},
+		],
 	},
 ];
 export const contactData = {

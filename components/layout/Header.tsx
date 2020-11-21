@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import Brand from "@components/Brand";
 import NavMenu from "@components/NavMenu";
-import SocialMedia from "@components/SocialMedia";
+import CartButton from "@features/cart/CartButton";
+import PhoneLink from "@components/PhoneLink";
+import { NavItem } from "@components/NavMenu";
 const Container = styled.header`
 	top: 0;
 	left: 0;
@@ -50,6 +52,7 @@ const SocialDiv = styled.div`
 	flex: 0.333333;
 	display: flex;
 	justify-content: flex-end;
+	align-items: center;
 
 	${({ theme }) => theme.breakpoints.down("md")} {
 		display: none;
@@ -65,7 +68,10 @@ function Header() {
 				<Brand />
 			</BrandDiv>
 			<SocialDiv>
-				<SocialMedia />
+				<NavItem>
+					<PhoneLink />
+				</NavItem>
+				<CartButton />
 			</SocialDiv>
 		</Container>
 	);
