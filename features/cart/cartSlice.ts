@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { RootState } from "@app/rootReducer";
 import axios from "axios";
 
 export type TProduct = {
@@ -6,6 +7,9 @@ export type TProduct = {
 	name: string;
 	price: number;
 	weight: number;
+};
+type TItemAddedPayload = {
+	payload: TProduct | undefined;
 };
 type TCartState = {
 	popupIsVisible: boolean;
@@ -23,9 +27,19 @@ const initialState: TCartState = {
 const cartSlice = createSlice({
 	name: "cart",
 	initialState,
-	reducers: {},
+	reducers: {
+		itemAdded: (state: TCartState, action: TItemAddedPayload) => {
+			if (!action.payload) return;
+			const { byId, allIds } = state.entities.items;
+			allIds.push(action.payload.id);
+			if (!byId.find((item) => item.id === action.payload?.id)) {
+				byId.push(action.payload);
+			}
+		},
+	},
 	extraReducers: (builder) => {},
 });
-export const {} = cartSlice.actions;
-
+export const { itemAdded } = cartSlice.actions;
+export const selectCartItemsList = (state: RootState) =>
+	state.cart.entities.items.allIds;
 export default cartSlice.reducer;

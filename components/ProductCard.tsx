@@ -4,11 +4,12 @@ import Image from "@components/Image";
 import Heading from "@components/Heading";
 import Paragraph from "@components/Paragraph";
 import Button from "@components/Button";
-import { TProduct } from "@features/cart/cartSlice";
-import Select, { ValueType } from "react-select";
+import { itemAdded, TProduct } from "@features/cart/cartSlice";
+import Select from "react-select";
 import { useContext } from "react";
 import { ThemeContext } from "styled-components";
 import theme from "@styles/theme";
+import { useDispatch } from "react-redux";
 
 interface IProductCard {
 	imageSrc: string;
@@ -65,14 +66,22 @@ const SelectDiv = styled.div`
 `;
 
 function ProductCard({ product }: { product: IProductCard }) {
+	const dispatch = useDispatch();
+	const themeContext = useContext(ThemeContext);
 	const options: Array<TOption> = product.variants.map(({ id, name }) => ({
 		value: id,
 		label: name,
 	}));
+	const [currentVariant, setCurrentVariant] = React.useState<TOption>(
+		options[0]
+	);
 	const { imageSrc, title, body } = product;
-	const themeContext = useContext(ThemeContext);
-	const [variant, setVariant] = React.useState<TOption>(options[0]);
-	const handleSelectChange = (option: any) => setVariant(option);
+	const currentProductVariant = product.variants.find(
+		(variant) => variant.id === currentVariant.value
+	);
+
+	const handleSelectChange = (option: any) => setCurrentVariant(option);
+	const handleAddToCart = () => dispatch(itemAdded(currentProductVariant));
 
 	return (
 		<Card>
@@ -86,7 +95,7 @@ function ProductCard({ product }: { product: IProductCard }) {
 				<SelectDiv>
 					<Select
 						options={options}
-						value={variant}
+						value={currentVariant}
 						onChange={(value) => handleSelectChange(value)}
 						label="Product Variants"
 						styles={{
@@ -116,7 +125,7 @@ function ProductCard({ product }: { product: IProductCard }) {
 						})}
 					/>
 				</SelectDiv>
-				<Button>Add to cart</Button>
+				<Button onClick={handleAddToCart}>Add to cart</Button>
 			</BodyDiv>
 		</Card>
 	);
