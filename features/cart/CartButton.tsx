@@ -2,6 +2,7 @@ import IconWrapper from "@components/IconWrapper";
 import { ShoppingCart } from "@styled-icons/entypo/ShoppingCart";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import CartOverlay from "./CartOverlay";
 import { selectCartItemsList } from "./cartSlice";
 
 const ItemCounter = styled.div`
@@ -26,6 +27,7 @@ function CartButton() {
 		<IconWrapper size="2em">
 			<ItemCounter>{itemsList.length}</ItemCounter>
 			<ShoppingCart />
+			<CartOverlay />
 		</IconWrapper>
 	);
 }

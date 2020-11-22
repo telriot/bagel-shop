@@ -44,7 +44,7 @@ const StyledButton = styled.button<IStyledButton>`
 				? theme.palette.secondary
 				: theme.palette.secondaryLight};
 		color: ${({ theme, disabled }) =>
-			disabled ? theme.palette.hoverFormGrey : theme.palette.tertiary};
+			disabled ? theme.palette.hoverFormGrey : "#fff"};
 	}
 
 	${({ theme }) => theme.breakpoints.down("lg")} {
