@@ -80,7 +80,7 @@ const theme: DefaultTheme = {
 		hoverFormGrey: "#c9c9c9",
 		formGreyLight: "#e5e5e5",
 		danger: "#f50057",
-		complimentary: "#348AA7",
+		complimentary: "#e81eab",
 		text: {
 			primary: "#222",
 			secondary: "#f3f3f3",

@@ -3,19 +3,31 @@ import {
 	selectCartItemsById,
 	selectCartItemsList,
 	selectCartTotal,
+	toggleCartIsOpen,
 } from "./cartSlice";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import OverlayProductCard from "./OverlayProductCard";
 import Button from "@components/Button";
-const Overlay = styled.div`
-	position: absolute;
+import { HTMLAttributes } from "react";
+import { useRouter } from "next/router";
+import { checkoutStepChanged } from "@features/checkout/checkoutSlice";
+interface IOverlay extends HTMLAttributes<HTMLDivElement> {
+	visible: boolean;
+	relative?: boolean;
+}
+const Overlay = styled.div<IOverlay>`
+	position: ${({ relative }) => (relative ? "relative" : "absolute")};
 	background-color: ${({ theme }) => theme.palette.primary};
 	z-index: 1000000;
 	min-height: 10em;
 	min-width: 18em;
-	transform: translate(-80%, 1em);
+	transform: ${({ relative }) => (relative ? "" : "translate(-80%, 1em)")};
 	box-shadow: ${({ theme }) => theme.shadows(4)};
 	padding: 0.5em 0.75em;
+	display: ${({ visible, relative }) =>
+		visible || relative ? "block" : "none"};
+	visibility: ${({ visible, relative }) =>
+		visible || relative ? "visible" : "hidden"};
 `;
 const ItemsDiv = styled.div`
 	max-height: 22em;
@@ -57,12 +69,26 @@ const TotalPrice = styled.span`
 	font-weight: 700;
 `;
 
-function CartOverlay() {
-	const itemsList = useSelector(selectCartItemsList);
+function CartOverlay({
+	visible,
+	relative,
+	noButton,
+}: {
+	visible: boolean;
+	relative?: boolean;
+	noButton?: boolean;
+}) {
 	const itemsById = useSelector(selectCartItemsById);
 	const total = useSelector(selectCartTotal);
+	const router = useRouter();
+	const dispatch = useDispatch();
+	const handleCheckout = () => {
+		dispatch(checkoutStepChanged(0));
+		dispatch(toggleCartIsOpen());
+		router.push("/checkout");
+	};
 	return (
-		<Overlay>
+		<Overlay relative={relative} visible={visible}>
 			<ItemsDiv>
 				{itemsById.length ? (
 					itemsById.map((item) => (
@@ -80,9 +106,11 @@ function CartOverlay() {
 				<CustomSpan>Total cart price:</CustomSpan>
 				<TotalPrice>{total} Yen</TotalPrice>
 			</CartTotalDiv>
-			<Button size="small" fullWidth>
-				Checkout
-			</Button>
+			{noButton ? null : (
+				<Button onClick={handleCheckout} size="small" fullWidth>
+					Checkout
+				</Button>
+			)}
 		</Overlay>
 	);
 }

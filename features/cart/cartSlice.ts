@@ -31,14 +31,14 @@ type TItemCountChanged = {
 };
 
 type TCartState = {
-	popupIsVisible: boolean;
+	cartIsOpen: boolean;
 	entities: {
 		items: { byId: TItemsById; allIds: TItemsAllIds };
 	};
 	total: number;
 };
 const initialState: TCartState = {
-	popupIsVisible: false,
+	cartIsOpen: false,
 	entities: {
 		items: { byId: [], allIds: [] },
 	},
@@ -48,6 +48,9 @@ const cartSlice = createSlice({
 	name: "cart",
 	initialState,
 	reducers: {
+		toggleCartIsOpen: (state: TCartState) => {
+			state.cartIsOpen = !state.cartIsOpen;
+		},
 		itemAdded: (state: TCartState, action: TItemAddedPayload) => {
 			if (!action.payload) return;
 			const { byId, allIds } = state.entities.items;
@@ -83,7 +86,9 @@ export const {
 	itemRemoved,
 	itemCountIncreased,
 	itemCountDecreased,
+	toggleCartIsOpen,
 } = cartSlice.actions;
+export const selectCartIsOpen = (state: RootState) => state.cart.cartIsOpen;
 export const selectCartItemsList = (state: RootState) =>
 	state.cart.entities.items.allIds;
 export const selectCartItemsById = (state: RootState) =>

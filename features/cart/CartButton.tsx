@@ -1,10 +1,18 @@
+import React from "react";
 import IconWrapper from "@components/IconWrapper";
 import { ShoppingCart } from "@styled-icons/entypo/ShoppingCart";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import CartOverlay from "./CartOverlay";
-import { selectCartItemsList } from "./cartSlice";
+import {
+	selectCartIsOpen,
+	selectCartItemsList,
+	toggleCartIsOpen,
+} from "./cartSlice";
 
+const CartDiv = styled.div`
+	position: relative;
+`;
 const ItemCounter = styled.div`
 	position: absolute;
 	display: grid;
@@ -18,17 +26,22 @@ const ItemCounter = styled.div`
 	font-size: ${({ theme }) => theme.typography.xs};
 	font-family: ${({ theme }) => theme.fontFamily.body};
 	transform: translate(1em, -0.5em);
+	cursor: pointer;
 `;
 function CartButton() {
 	const dispatch = useDispatch();
 	const itemsList = useSelector(selectCartItemsList);
+	const isOpen = useSelector(selectCartIsOpen);
 
+	const handleCartClick = () => dispatch(toggleCartIsOpen());
 	return (
-		<IconWrapper size="2em">
-			<ItemCounter>{itemsList.length}</ItemCounter>
-			<ShoppingCart />
-			<CartOverlay />
-		</IconWrapper>
+		<CartDiv>
+			<IconWrapper onClick={handleCartClick} size="2em">
+				<ItemCounter>{itemsList.length}</ItemCounter>
+				<ShoppingCart />
+			</IconWrapper>
+			<CartOverlay visible={isOpen} />
+		</CartDiv>
 	);
 }
 

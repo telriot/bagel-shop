@@ -1,5 +1,5 @@
 import { HTMLAttributes } from "react";
-import { navLinks } from "@public/config";
+import { navLinks } from "@config/index";
 import Hamburger from "@components/Hamburger";
 import Link from "next/link";
 import styled from "styled-components";

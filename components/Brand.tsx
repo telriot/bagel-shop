@@ -1,7 +1,7 @@
 import { HTMLAttributes } from "react";
 import Link from "next/link";
 import styled from "styled-components";
-import { siteInfo } from "@public/config";
+import { siteInfo } from "@config/index";
 interface IBrand extends HTMLAttributes<HTMLHeadingElement> {}
 interface IStyledBrand extends HTMLAttributes<HTMLHeadingElement> {}
 const BrandContainer = styled.div`

@@ -5,7 +5,7 @@ import Heading from "@components/Heading";
 import Paragraph from "@components/Paragraph";
 import Wrapper from "@components/TextWrapper";
 import Button from "@components/Button";
-import { staples } from "@public/config";
+import { staples } from "@config/index";
 import StapleCard from "@components/StapleCard";
 
 const MainBanner = styled.div`
@@ -128,7 +128,7 @@ export default function Home() {
 			</HeadingDiv>
 			<StaplesGrid>
 				{staples.map((staple, i) => (
-					<StapleCard index={i} staple={staple} />
+					<StapleCard key={staple.title} index={i} staple={staple} />
 				))}
 			</StaplesGrid>
 			<HeadingDiv>

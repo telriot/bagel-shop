@@ -5,7 +5,7 @@ import Heading from "@components/Heading";
 import Paragraph from "@components/Paragraph";
 import Wrapper from "@components/TextWrapper";
 import Button from "@components/Button";
-import { staples, products } from "@public/config";
+import { staples, products, TProduct } from "@config/index";
 import ProductCard from "@components/ProductCard";
 
 const HeadingDiv = styled.div`
@@ -37,7 +37,7 @@ export default function Home() {
 				<Heading variant={2}>Our Products</Heading>
 			</HeadingDiv>
 			<ProductsDiv>
-				{products.map((product, i) => (
+				{products.map((product: TProduct, i: number) => (
 					<ProductCard
 						key={`product-card-${product.title}`}
 						product={product}

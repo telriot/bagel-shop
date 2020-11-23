@@ -6,7 +6,6 @@ interface IStyledButton extends HTMLAttributes<HTMLButtonElement> {
 	expandAtSm?: boolean;
 	size?: "default" | "small";
 	fullWidth?: boolean;
-	type?: string;
 	disabled?: boolean;
 }
 const StyledButton = styled.button<IStyledButton>`

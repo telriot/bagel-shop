@@ -1,4 +1,4 @@
-import { contactData } from "@public/config";
+import { contactData } from "@config/index";
 function PhoneLink() {
 	const { phone } = contactData;
 	const formattedPhone = `${phone.slice(0, 3)} ${phone.slice(

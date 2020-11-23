@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { siteInfo } from "@public/config";
+import { siteInfo } from "@config/index";
 import { HTMLAttributes } from "react";
 interface ICopyright extends HTMLAttributes<HTMLSpanElement> {
 	invert?: boolean;

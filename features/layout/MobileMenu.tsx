@@ -10,7 +10,7 @@ import {
 	selectMobileNavIsOpen,
 	selectMobileNavIsRendered,
 } from "./layoutSlice";
-import { navLinks } from "@public/config";
+import { navLinks } from "@config/index";
 import Link from "next/link";
 import Heading from "@components/Heading";
 

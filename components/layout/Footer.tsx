@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { navLinks, contactData, siteInfo } from "@public/config";
+import { navLinks, contactData, siteInfo } from "@config/index";
 import Copyright from "@components/Copyright";
 import PhoneLink from "@components/PhoneLink";
 import Heading from "@components/Heading";
