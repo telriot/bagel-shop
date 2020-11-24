@@ -1,7 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { RootState } from "@app/rootReducer";
-import axios from "axios";
-import { AlignLeftDimensions } from "@styled-icons/entypo/AlignLeft";
 
 type TItemsById = Array<TProduct>;
 type TItemsAllIds = Array<string>;
@@ -78,10 +76,16 @@ const cartSlice = createSlice({
 			itemIndex !== -1 && allIds.splice(itemIndex, 1);
 			state.total = getTotal(byId, allIds);
 		},
+		cartEmptied: (state: TCartState) => {
+			state.entities.items.byId = new Array();
+			state.entities.items.allIds = new Array();
+			state.total = 0;
+		},
 	},
 	extraReducers: (builder) => {},
 });
 export const {
+	cartEmptied,
 	itemAdded,
 	itemRemoved,
 	itemCountIncreased,

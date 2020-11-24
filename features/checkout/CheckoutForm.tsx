@@ -5,7 +5,12 @@ import { checkoutSchema } from "@validators/index";
 import TextField from "@components/TextField";
 import styled from "styled-components";
 import Button from "@components/Button";
-import { checkoutStepChanged, createPaymentIntent } from "./checkoutSlice";
+import {
+	checkoutStepChanged,
+	createPaymentIntent,
+	TOrderInfo,
+} from "./checkoutSlice";
+import { selectCartItemsList } from "@features/cart/cartSlice";
 
 interface IValues {
 	firstName: string;
@@ -30,8 +35,23 @@ const CombinedRow = styled.div`
 `;
 function CheckoutForm() {
 	const dispatch = useDispatch();
+	const cartItems = useSelector(selectCartItemsList);
 	const handleSubmit = async (values: IValues) => {
-		await dispatch(createPaymentIntent());
+		const orderInfoObj: TOrderInfo = {
+			shipping: {
+				address: {
+					line1: values.addressLine1,
+					city: values.city,
+					postal_code: values.zipCode,
+					line2: values.addressLine2,
+					state: values.prefecture,
+				},
+				name: `${values.lastName} ${values.firstName}`,
+				phone: values.phone,
+			},
+			metadata: { email: values.email, items: cartItems.join(",") },
+		};
+		await dispatch(createPaymentIntent(orderInfoObj));
 	};
 
 	return (

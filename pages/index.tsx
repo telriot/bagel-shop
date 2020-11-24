@@ -5,7 +5,7 @@ import Heading from "@components/Heading";
 import Paragraph from "@components/Paragraph";
 import Wrapper from "@components/TextWrapper";
 import Button from "@components/Button";
-import { staples } from "@config/index";
+import { staples } from "../config/index";
 import StapleCard from "@components/StapleCard";
 
 const MainBanner = styled.div`
@@ -137,7 +137,7 @@ export default function Home() {
 
 			<GalleryGrid>
 				{galleryPics.map((_, i) => (
-					<GalleryImgDiv>
+					<GalleryImgDiv key={`gall-img-${i}`}>
 						<Image
 							objectFit="cover"
 							alt={`bakes ${i}`}

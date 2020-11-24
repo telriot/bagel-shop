@@ -93,6 +93,7 @@ function CartOverlay({
 				{itemsById.length ? (
 					itemsById.map((item) => (
 						<OverlayProductCard
+							key={item.id}
 							product={itemsById.find((el) => el.id === item.id)!}
 						/>
 					))
